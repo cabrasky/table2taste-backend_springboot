@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AllergenDTO implements ModelDTOInterface<String>{
 	@JsonProperty("id")
-	public Optional<String> id;
+	public String id;
 	
 	@JsonProperty("mediaUrl")
 	public Optional<String> mediaUrl;

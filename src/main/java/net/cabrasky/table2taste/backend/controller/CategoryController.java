@@ -11,10 +11,15 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/categories")
-public class CategoryController extends AbstractModificableController<Category, CategoryDTO, Integer, CategoryService>{
+public class CategoryController extends AbstractModificableController<Category, CategoryDTO, String, CategoryService>{
 
-	@GetMapping("/filters/")
-	public List<Category> getAllFiltered(@RequestParam(required = false) Integer parentCategoryId) {
-		return service.getAllByParentCategoryId(parentCategoryId);
+	@GetMapping(params = {"parentCategoryId"})
+	public List<Category> getAllFiltered(@RequestParam(required = true) String parentCategoryId) {
+		return service.getAllByParentCategoryId(parentCategoryId.isEmpty() ? null : parentCategoryId);
+	}
+	
+	@GetMapping(path = "/ancestors", params = {"id"})
+	public List<Category> getAllParents(@RequestParam(required = true) String id) {
+		return service.getCategoryAncestors(id);
 	}
 }

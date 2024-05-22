@@ -13,7 +13,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "group")
+@Table(name = "app_group")
 public class Group implements ModificableModelInterface<String> {
 	@Id
 	@Column(name = "id")
@@ -30,23 +30,24 @@ public class Group implements ModificableModelInterface<String> {
 	@JoinTable(name = "group_translation", joinColumns = @JoinColumn(name = "group_id"), inverseJoinColumns = @JoinColumn(name = "translation_id"))
 	private Set<Translation> translations;
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "user_group", joinColumns = @JoinColumn(name = "group_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
-	private Set<User> users;
-
 	public String getId() {
 		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public Set<Privilage> getPrivilages() {
 		return privilages;
 	}
 
-	public void setPrivilages(Set<Privilage> newPrivilages) {
-		this.privilages.clear();
-
-		if (newPrivilages != null) {
-			this.privilages.addAll(newPrivilages);
+	public void setPrivilages(Set<Privilage> privilages) {
+		if(this.privilages != null){
+			this.privilages.clear();
+			this.privilages.addAll(privilages);
+		} else {
+			this.privilages = privilages;
 		}
 	}
 
@@ -62,16 +63,13 @@ public class Group implements ModificableModelInterface<String> {
 		return this.translations;
 	}
 
-	public void setTranslations(Set<Translation> translations) {
-		this.translations = translations;
-    }
-	
-	public Set<User> getUsers() {
-		return this.users;
-	}
-
-	public void setUsers(Set<User> users) {
-		this.users = users;
+	public void setTranslations(Set<Translation> translations) {		
+		if(this.translations != null){
+			this.translations.clear();
+			this.translations.addAll(translations);
+		} else {
+			this.translations = translations;
+		}
     }
 
 }

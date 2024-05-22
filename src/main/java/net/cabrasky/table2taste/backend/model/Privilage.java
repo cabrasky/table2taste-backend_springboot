@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "privilage")
+@Table(name = "app_privilage")
 public class Privilage implements ModelInterface<String> {
 	@Id
 	@Column(name = "id")
@@ -14,5 +14,9 @@ public class Privilage implements ModelInterface<String> {
 
 	public String getId() {
 		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 }

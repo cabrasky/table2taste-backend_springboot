@@ -6,14 +6,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "translation")
-public class Translation implements ModelInterface<Integer>{
+public class Translation implements ModelInterface<Integer> {
 
     @Id
-	@GeneratedValue
+    @GeneratedValue(generator = "translation_gen")
+    @SequenceGenerator(name = "translation_gen", sequenceName = "translation_id_seq", allocationSize = 1)
     @Column(name = "id")
     private Integer id;
 
@@ -31,10 +33,6 @@ public class Translation implements ModelInterface<Integer>{
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public Language getLanguage() {

@@ -1,0 +1,648 @@
+{
+	"languages": [
+		"en",
+		"es",
+		"fr",
+		"de",
+		"it",
+		"pt",
+		"nl",
+		"ru",
+		"zh",
+		"ja",
+		"ko",
+		"ar",
+		"hi",
+		"bn",
+		"vi",
+		"tr",
+		"pl",
+		"sv",
+		"fi",
+		"no"
+	],
+	"allergens": [
+		{
+			"id": "celery",
+			"media_url": "https://example.com/celery_image.jpg",
+			"inclusive": false,
+			"translations": {
+				"en": {
+					"name": "Celery"
+				},
+				"es": {
+					"name": "Apio"
+				}
+			}
+		},
+		{
+			"id": "crustaceans",
+			"media_url": "https://example.com/crustaceans_image.jpg",
+			"inclusive": false,
+			"translations": {
+				"en": {
+					"name": "Crustaceans"
+				},
+				"es": {
+					"name": "Crustáceos"
+				}
+			}
+		},
+		{
+			"id": "eggs",
+			"media_url": "https://example.com/eggs_image.jpg",
+			"inclusive": false,
+			"translations": {
+				"en": {
+					"name": "Eggs"
+				},
+				"es": {
+					"name": "Huevos"
+				}
+			}
+		},
+		{
+			"id": "fish",
+			"media_url": "https://example.com/fish_image.jpg",
+			"inclusive": false,
+			"translations": {
+				"en": {
+					"name": "Fish"
+				},
+				"es": {
+					"name": "Pescado"
+				}
+			}
+		},
+		{
+			"id": "lupin",
+			"media_url": "https://example.com/lupin_image.jpg",
+			"inclusive": false,
+			"translations": {
+				"en": {
+					"name": "Lupin"
+				},
+				"es": {
+					"name": "Altramuces"
+				}
+			}
+		},
+		{
+			"id": "milk",
+			"media_url": "https://example.com/milk_image.jpg",
+			"inclusive": false,
+			"translations": {
+				"en": {
+					"name": "Milk"
+				},
+				"es": {
+					"name": "Leche"
+				}
+			}
+		},
+		{
+			"id": "molluscs",
+			"media_url": "https://example.com/molluscs_image.jpg",
+			"inclusive": false,
+			"translations": {
+				"en": {
+					"name": "Molluscs"
+				},
+				"es": {
+					"name": "Moluscos"
+				}
+			}
+		},
+		{
+			"id": "mustard",
+			"media_url": "https://example.com/mustard_image.jpg",
+			"inclusive": false,
+			"translations": {
+				"en": {
+					"name": "Mustard"
+				},
+				"es": {
+					"name": "Mostaza"
+				}
+			}
+		},
+		{
+			"id": "peanuts",
+			"media_url": "https://example.com/peanuts_image.jpg",
+			"inclusive": false,
+			"translations": {
+				"en": {
+					"name": "Peanuts"
+				},
+				"es": {
+					"name": "Cacauetes"
+				}
+			}
+		},
+		{
+			"id": "sesame",
+			"media_url": "https://example.com/sesame_image.jpg",
+			"inclusive": false,
+			"translations": {
+				"en": {
+					"name": "Sesame"
+				},
+				"es": {
+					"name": "Sésamo"
+				}
+			}
+		},
+		{
+			"id": "soybeans",
+			"media_url": "https://example.com/soybeans_image.jpg",
+			"inclusive": false,
+			"translations": {
+				"en": {
+					"name": "Soybeans"
+				},
+				"es": {
+					"name": "Soja"
+				}
+			}
+		},
+		{
+			"id": "sulphur_dioxide_sulphites",
+			"media_url": "https://example.com/sulphites_image.jpg",
+			"inclusive": false,
+			"translations": {
+				"en": {
+					"name": "Sulphur Dioxide/Sulphites"
+				},
+				"es": {
+					"name": "Dioxido de Azufre/Sulfitos"
+				}
+			}
+		},
+		{
+			"id": "gluten",
+			"media_url": "https://example.com/gluten_image.jpg",
+			"inclusive": false,
+			"translations": {
+				"en": {
+					"name": "Gluten"
+				},
+				"es": {
+					"name": "Gluten"
+				}
+			}
+		},
+		{
+			"id": "nuts",
+			"media_url": "https://example.com/nuts_image.jpg",
+			"inclusive": false,
+			"translations": {
+				"en": {
+					"name": "Nuts"
+				},
+				"es": {
+					"name": "Frutos Secos"
+				}
+			}
+		},
+		{
+			"id": "vegan",
+			"media_url": "https://example.com/vegan_image.jpg",
+			"inclusive": true,
+			"translations": {
+				"en": {
+					"name": "Vegan"
+				},
+				"es": {
+					"name": "Vegano"
+				}
+			}
+		},
+		{
+			"id": "vegetarian",
+			"media_url": "https://example.com/vegetarian_image.jpg",
+			"inclusive": true,
+			"translations": {
+				"en": {
+					"name": "Vegetarian"
+				},
+				"es": {
+					"name": "Vegetariano"
+				}
+			}
+		}
+	],
+	"privilages": [
+		"PLACE_ORDER",
+		"LOGOUT",
+		"TRACK_ORDER",
+		"UPDATE_MENU",
+		"SALES_REPORT",
+		"UPDATE_ORDER_STATUS"
+	],
+	"groups": [
+		{
+			"id": "admin",
+			"color": "#ff0000",
+			"translations": {
+				"en": {
+					"name": "Admin"
+				},
+				"es": {
+					"name": "Administrador"
+				}
+			},
+			"privilages": [
+				"UPDATE_MENU",
+				"SALES_REPORT"
+			]
+		},
+		{
+			"id": "waiter",
+			"color": "#00ff00",
+			"translations": {
+				"en": {
+					"name": "Waiter"
+				},
+				"es": {
+					"name": "Camarero"
+				}
+			},
+			"privilages": [
+				"UPDATE_ORDER_STATUS",
+				"TRACK_ORDER"
+			]
+		},
+		{
+			"id": "guest",
+			"color": "#0000ff",
+			"translations": {
+				"en": {
+					"name": "Guest"
+				},
+				"es": {
+					"name": "Invitado"
+				}
+			},
+			"privilages": [
+				"PLACE_ORDER",
+				"LOGOUT",
+				"TRACK_ORDER"
+			]
+		}
+	],
+	"users": [
+		{
+			"username": "admin",
+			"photo_url": "admin_photo_url",
+			"password": "$2a$12$DZrx1cIkQzsONgFjfupMtegwiWIPFbtEdfMkpQ2S6cW2fjrXaAM3C",
+			"groups": [
+				"admin"
+			]
+		},
+		{
+			"username": "waiter",
+			"photo_url": "waiter_photo_url",
+			"password": "$2a$12$DZrx1cIkQzsONgFjfupMtegwiWIPFbtEdfMkpQ2S6cW2fjrXaAM3C",
+			"groups": [
+				"waiter"
+			]
+		},
+		{
+			"username": "guest",
+			"photo_url": "waiter_photo_url",
+			"password": "$2a$12$DZrx1cIkQzsONgFjfupMtegwiWIPFbtEdfMkpQ2S6cW2fjrXaAM3C",
+			"groups": [
+				"guest"
+			]
+		}
+	],
+	"categories": [
+		{
+			"id": "entrantes",
+			"translations": {
+				"en": {
+					"name": "Appetizers"
+				},
+				"es": {
+					"name": "Entrantes"
+				}
+			},
+			"parentCategoryId": null,
+			"menuItems": [
+				{
+					"id": "jamon_iberico",
+					"price": 15.00,
+					"allergens": [
+						"gluten"
+					],
+					"translations": {
+						"en": {
+							"name": "Iberian Ham",
+							"description": "Thin slices of Iberian ham served with crispy bread."
+						},
+						"es": {
+							"name": "Jamón Ibérico",
+							"description": "Finas lonchas de jamón ibérico servidas con pan de cristal."
+						}
+					}
+				},
+				{
+					"id": "gazpacho_andaluz",
+					"price": 8.00,
+					"allergens": [
+						"vegan",
+						"vegetarian"
+					],
+					"translations": {
+						"en": {
+							"name": "Andalusian Gazpacho",
+							"description": "Cold tomato, pepper, cucumber, and garlic soup, drizzled with extra virgin olive oil."
+						},
+						"es": {
+							"name": "Gazpacho Andaluz",
+							"description": "Sopa fría de tomate, pimiento, pepino y ajo, aliñada con aceite de oliva virgen extra."
+						}
+					}
+				},
+				{
+					"id": "tortilla_espanola",
+					"price": 6.00,
+					"allergens": [
+						"eggs",
+						"vegetarian"
+					],
+					"translations": {
+						"en": {
+							"name": "Spanish Omelette",
+							"description": "Traditional potato omelette with onions."
+						},
+						"es": {
+							"name": "Tortilla Española",
+							"description": "Tortilla de patatas tradicional con cebolla."
+						}
+					}
+				},
+				{
+					"id": "croquetas_de_jamon",
+					"price": 10.00,
+					"allergens": [
+						"gluten",
+						"milk",
+						"eggs"
+					],
+					"translations": {
+						"en": {
+							"name": "Ham Croquettes",
+							"description": "Crunchy croquettes filled with Iberian ham and béchamel sauce."
+						},
+						"es": {
+							"name": "Croquetas de Jamón",
+							"description": "Croquetas crujientes rellenas de jamón ibérico y bechamel."
+						}
+					}
+				}
+			]
+		},
+		{
+			"id": "platos_principales",
+			"translations": {
+				"en": {
+					"name": "Main Courses"
+				},
+				"es": {
+					"name": "Platos Principales"
+				}
+			},
+			"parentCategoryId": null,
+			"menuItems": [
+				{
+					"id": "paella_valenciana",
+					"price": 20.00,
+					"allergens": [
+					],
+					"translations": {
+						"en": {
+							"name": "Valencian Paella",
+							"description": "Perfectly cooked rice with chicken, rabbit, green beans, and butter beans."
+						},
+						"es": {
+							"name": "Paella Valenciana",
+							"description": "Arroz cocido a la perfección con pollo, conejo, judías verdes y garrofón."
+						}
+					}
+				},
+				{
+					"id": "merluza_a_la_gallega",
+					"price": 18.00,
+					"allergens": [
+						"fish"
+					],
+					"translations": {
+						"en": {
+							"name": "Galician-Style Hake",
+							"description": "Baked hake fillet with potatoes and paprika."
+						},
+						"es": {
+							"name": "Merluza a la Gallega",
+							"description": "Filete de merluza al horno con patatas y pimentón."
+						}
+					}
+				},
+				{
+					"id": "cordero_asado",
+					"price": 22.00,
+					"allergens": [
+					],
+					"translations": {
+						"en": {
+							"name": "Roast Lamb",
+							"description": "Tender lamb pieces roasted at low temperature with aromatic herbs."
+						},
+						"es": {
+							"name": "Cordero Asado",
+							"description": "Tiernas piezas de cordero asado a baja temperatura con hierbas aromáticas."
+						}
+					}
+				},
+				{
+					"id": "pisto_manchego",
+					"price": 14.00,
+					"allergens": [
+						"vegan",
+						"vegetarian"
+					],
+					"translations": {
+						"en": {
+							"name": "Manchego Ratatouille",
+							"description": "Stew of seasonal vegetables with tomato, pepper, zucchini, and eggplant."
+						},
+						"es": {
+							"name": "Pisto Manchego",
+							"description": "Estofado de verduras de temporada con tomate, pimiento, calabacín y berenjena."
+						}
+					}
+				}
+			]
+		},
+		{
+			"id": "postres",
+			"translations": {
+				"en": {
+					"name": "Desserts"
+				},
+				"es": {
+					"name": "Postres"
+				}
+			},
+			"parentCategoryId": null,
+			"menuItems": [
+				{
+					"id": "tarta_de_santiago",
+					"price": 7.00,
+					"allergens": [
+						"nuts",
+						"eggs",
+						"vegetarian"
+					],
+					"translations": {
+						"en": {
+							"name": "Santiago Cake",
+							"description": "Traditional Galician almond cake with powdered sugar."
+						},
+						"es": {
+							"name": "Tarta de Santiago",
+							"description": "Tradicional tarta de almendra gallega con azúcar glas."
+						}
+					}
+				},
+				{
+					"id": "crema_catalana",
+					"price": 6.00,
+					"allergens": [
+						"milk",
+						"eggs",
+						"vegetarian"
+					],
+					"translations": {
+						"en": {
+							"name": "Catalan Cream",
+							"description": "Delicious custard with a crunchy caramelized sugar layer."
+						},
+						"es": {
+							"name": "Crema Catalana",
+							"description": "Deliciosa crema con una capa crujiente de azúcar caramelizado."
+						}
+					}
+				},
+				{
+					"id": "churros_con_chocolate",
+					"price": 5.00,
+					"allergens": [
+						"gluten",
+						"milk",
+						"vegetarian"
+					],
+					"translations": {
+						"en": {
+							"name": "Churros with Chocolate",
+							"description": "Crispy churros served with a rich cup of hot chocolate."
+						},
+						"es": {
+							"name": "Churros con Chocolate",
+							"description": "Churros crujientes servidos con una rica taza de chocolate caliente."
+						}
+					}
+				}
+			]
+		},
+		{
+			"id": "bebidas",
+			"translations": {
+				"en": {
+					"name": "Beverages"
+				},
+				"es": {
+					"name": "Bebidas"
+				}
+			},
+			"parentCategoryId": null,
+			"menuItems": [
+				{
+					"id": "sangria",
+					"price": 4.00,
+					"allergens": [
+						"sulphur_dioxide_sulphites",
+						"vegan",
+						"vegetarian"
+					],
+					"translations": {
+						"en": {
+							"name": "Sangria",
+							"description": "Refreshing red wine beverage with fruits and a splash of liquor."
+						},
+						"es": {
+							"name": "Sangría",
+							"description": "Refrescante bebida de vino tinto con frutas y un toque de licor."
+						}
+					}
+				},
+				{
+					"id": "agua_de_valencia",
+					"price": 6.00,
+					"allergens": [
+						"sulphur_dioxide_sulphites",
+						"vegan",
+						"vegetarian"
+					],
+					"translations": {
+						"en": {
+							"name": "Agua de Valencia",
+							"description": "Cocktail of cava, orange juice, vodka, and gin."
+						},
+						"es": {
+							"name": "Agua de Valencia",
+							"description": "Cóctel de cava, zumo de naranja, vodka y ginebra."
+						}
+					}
+				},
+				{
+					"id": "vino_rioja",
+					"price": 5.00,
+					"allergens": [
+						"sulphur_dioxide_sulphites",
+						"vegan",
+						"vegetarian"
+					],
+					"translations": {
+						"en": {
+							"name": "Rioja Wine",
+							"description": "Selection of red wines from the Rioja region."
+						},
+						"es": {
+							"name": "Vino Rioja",
+							"description": "Selección de vinos tintos de la región de Rioja."
+						}
+					}
+				},
+				{
+					"id": "horchata_de_chufa",
+					"price": 3.00,
+					"allergens": [
+						"vegan",
+						"vegetarian"
+					],
+					"translations": {
+						"en": {
+							"name": "Tiger Nut Milk",
+							"description": "Sweet beverage made from tiger nuts, typical of Valencia."
+						},
+						"es": {
+							"name": "Horchata de Chufa",
+							"description": "Bebida dulce a base de chufas, típica de Valencia."
+						}
+					}
+				}
+			]
+		}
+	]
+}

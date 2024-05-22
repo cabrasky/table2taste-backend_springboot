@@ -6,18 +6,18 @@ import java.util.Optional;
 import java.util.Set;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class MenuItemDTO implements ModelDTOInterface<Integer> {
-    @JsonProperty("id")
-    public Optional<Integer> id;
-
+public class MenuItemDTO implements ModelDTOInterface<String> {
+	@JsonProperty("id")
+    public String id;
+	
     @JsonProperty("price")
     public Optional<Double> price;
 
     @JsonProperty("mediaUrl")
     public Optional<String> mediaUrl;
 
-    @JsonProperty("category")
-    public Optional<CategoryDTO> category;
+    @JsonProperty("categoryId")
+    public String categoryId;
 
     @JsonProperty("translations")
     public Set<TranslationDTO> translations;

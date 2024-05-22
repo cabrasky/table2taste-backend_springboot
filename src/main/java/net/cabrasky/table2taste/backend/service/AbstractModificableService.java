@@ -43,7 +43,6 @@ public abstract class AbstractModificableService<T extends ModificableModelInter
 			return false;
 		}
 		return true;
-
 	}
 
 	@Transactional

@@ -16,11 +16,11 @@ public abstract class AbstractController<T extends ModelInterface<I>, I, S exten
 	@Autowired
     protected S service;
 
-    @GetMapping()
+    @GetMapping
     public List<T> getAll() {
         return service.getAll();
     }
-
+    
     @GetMapping(params = {"id"})
     public Optional<T> getById(@RequestParam(name="id") I id) {
         return service.getById(id);

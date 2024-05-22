@@ -8,7 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,7 +24,7 @@ public class Allergen implements ModelInterface<String>{
     @Column(name = "inclusive")
     private boolean inclusive;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinTable(
             name = "allergen_translation",
             joinColumns = @JoinColumn(name = "allergen_id"),
@@ -63,6 +63,11 @@ public class Allergen implements ModelInterface<String>{
 	}
 
 	public void setTranslations(Set<Translation> translations) {
-		this.translations = translations;
+		if(this.translations != null){
+			this.translations.clear();
+			this.translations.addAll(translations);
+		} else {
+			this.translations = translations;
+		}
     }
 }
