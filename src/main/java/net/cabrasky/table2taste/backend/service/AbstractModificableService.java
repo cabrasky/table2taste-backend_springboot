@@ -11,11 +11,11 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.transaction.Transactional;
-import net.cabrasky.table2taste.backend.model.ModificableModelInterface;
+import net.cabrasky.table2taste.backend.model.ModelInterface;
 import net.cabrasky.table2taste.backend.modelDto.ModelDTOInterface;
 
 @Service
-public abstract class AbstractModificableService<T extends ModificableModelInterface<I>, DTO extends ModelDTOInterface<I>, I, R extends JpaRepository<T, I>> extends AbstractService<T, I, R>{
+public abstract class AbstractModificableService<T extends ModelInterface<I>, DTO extends ModelDTOInterface<I>, I, R extends JpaRepository<T, I>> extends AbstractService<T, I, R>{
 	@Autowired
 	ObjectMapper objectMapper;
 	

@@ -2,7 +2,7 @@ package net.cabrasky.table2taste.backend.jwt;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import net.cabrasky.table2taste.backend.model.Privilage;
+import net.cabrasky.table2taste.backend.model.Privilege;
 import net.cabrasky.table2taste.backend.model.User;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -22,20 +22,22 @@ public class UserDetailsImpl implements UserDetails {
     @JsonIgnore
     private String password;
 
-	private List<GrantedAuthority> privilages;
+    private String tableId;
+
+	private List<GrantedAuthority> privileges;
 
     public UserDetailsImpl(User user) {
         this.username = user.getUsername();
         this.password = user.getPassword();
         
-        List<GrantedAuthority> privilages = new ArrayList<>();
+        List<GrantedAuthority> privileges = new ArrayList<>();
 
-        for(Privilage privilate : user.getGroups().stream().flatMap(group -> group.getPrivilages().stream()).toList()){
+        for(Privilege privilate : user.getGroups().stream().flatMap(group -> group.getPrivileges().stream()).toList()){
 
-        	privilages.add(new SimpleGrantedAuthority(privilate.getId().toUpperCase()));
+        	privileges.add(new SimpleGrantedAuthority(privilate.getId().toUpperCase()));
         }
-        this.privilages = privilages;
-        System.out.println(privilages);
+        this.privileges = privileges;
+        this.tableId = "test";
 
     }
 
@@ -50,7 +52,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return privilages;
+        return privileges;
     }
 
     @Override
@@ -61,6 +63,10 @@ public class UserDetailsImpl implements UserDetails {
     @Override
     public String getUsername() {
         return username;
+    }
+
+    public String getTableId() {
+        return tableId;
     }
 
     @Override

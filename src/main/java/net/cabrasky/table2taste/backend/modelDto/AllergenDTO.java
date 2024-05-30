@@ -11,9 +11,6 @@ public class AllergenDTO implements ModelDTOInterface<String>{
 	@JsonProperty("id")
 	public String id;
 	
-	@JsonProperty("mediaUrl")
-	public Optional<String> mediaUrl;
-	
 	@JsonProperty("inclusive")
 	public Optional<Boolean> inclusive;
 	

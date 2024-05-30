@@ -17,7 +17,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "menu_item")
-public class MenuItem implements ModificableModelInterface<String> {
+public class MenuItem implements ModelInterface<String> {
 
     @Id
     @Column(name = "id")

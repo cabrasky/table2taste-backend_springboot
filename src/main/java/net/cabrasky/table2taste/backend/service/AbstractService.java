@@ -22,4 +22,8 @@ public abstract class AbstractService<T extends ModelInterface<I>, I, R extends 
 	public Optional<T> getById(I id) {
 		return repository.findById(id);
 	}
+	
+	public boolean existsById(I id) {
+		return repository.existsById(id);
+	}
 }

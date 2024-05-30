@@ -17,9 +17,6 @@ public class Allergen implements ModelInterface<String>{
     @Id
     @Column(name = "id")
     private String id;
-
-    @Column(name = "media_url")
-    private String mediaUrl;
     
     @Column(name = "inclusive")
     private boolean inclusive;
@@ -40,14 +37,6 @@ public class Allergen implements ModelInterface<String>{
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getMediaUrl() {
-        return mediaUrl;
-    }
-
-    public void setMediaUrl(String mediaUrl) {
-        this.mediaUrl = mediaUrl;
     }
 
 	public boolean isInclusive() {

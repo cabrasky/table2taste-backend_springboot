@@ -11,6 +11,9 @@ public class Language implements ModelInterface<String> {
 	@Id
 	@Column(name = "id")
 	private String id;
+	
+	@Column(name = "required")
+	private Boolean required = false;
 
 	public String getId() {
 		return id;
@@ -18,5 +21,13 @@ public class Language implements ModelInterface<String> {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public Boolean getRequired() {
+		return required;
+	}
+
+	public void setRequired(Boolean required) {
+		this.required = required;
 	}
 }

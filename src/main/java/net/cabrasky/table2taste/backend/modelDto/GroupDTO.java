@@ -9,8 +9,8 @@ public class GroupDTO implements ModelDTOInterface<String> {
     @JsonProperty("id")
     public String id;
 
-    @JsonProperty("privilages")
-    public Set<PrivilageDTO> privilages; 
+    @JsonProperty("privileges")
+    public Set<PrivilegeDTO> privileges; 
 
     @JsonProperty("color")
     public String color;

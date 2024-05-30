@@ -11,13 +11,13 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "translation")
-public class Translation implements ModelInterface<Integer> {
+public class Translation implements ModelInterface<Long> {
 
     @Id
     @GeneratedValue(generator = "translation_gen")
     @SequenceGenerator(name = "translation_gen", sequenceName = "translation_id_seq", allocationSize = 1)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "language_id")
@@ -31,7 +31,7 @@ public class Translation implements ModelInterface<Integer> {
 
     // Getters and setters
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

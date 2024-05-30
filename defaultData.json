@@ -24,7 +24,6 @@
 	"allergens": [
 		{
 			"id": "celery",
-			"media_url": "https://example.com/celery_image.jpg",
 			"inclusive": false,
 			"translations": {
 				"en": {
@@ -37,7 +36,6 @@
 		},
 		{
 			"id": "crustaceans",
-			"media_url": "https://example.com/crustaceans_image.jpg",
 			"inclusive": false,
 			"translations": {
 				"en": {
@@ -50,7 +48,6 @@
 		},
 		{
 			"id": "eggs",
-			"media_url": "https://example.com/eggs_image.jpg",
 			"inclusive": false,
 			"translations": {
 				"en": {
@@ -63,7 +60,6 @@
 		},
 		{
 			"id": "fish",
-			"media_url": "https://example.com/fish_image.jpg",
 			"inclusive": false,
 			"translations": {
 				"en": {
@@ -76,7 +72,6 @@
 		},
 		{
 			"id": "lupin",
-			"media_url": "https://example.com/lupin_image.jpg",
 			"inclusive": false,
 			"translations": {
 				"en": {
@@ -89,7 +84,6 @@
 		},
 		{
 			"id": "milk",
-			"media_url": "https://example.com/milk_image.jpg",
 			"inclusive": false,
 			"translations": {
 				"en": {
@@ -102,7 +96,6 @@
 		},
 		{
 			"id": "molluscs",
-			"media_url": "https://example.com/molluscs_image.jpg",
 			"inclusive": false,
 			"translations": {
 				"en": {
@@ -115,7 +108,6 @@
 		},
 		{
 			"id": "mustard",
-			"media_url": "https://example.com/mustard_image.jpg",
 			"inclusive": false,
 			"translations": {
 				"en": {
@@ -128,7 +120,6 @@
 		},
 		{
 			"id": "peanuts",
-			"media_url": "https://example.com/peanuts_image.jpg",
 			"inclusive": false,
 			"translations": {
 				"en": {
@@ -141,7 +132,6 @@
 		},
 		{
 			"id": "sesame",
-			"media_url": "https://example.com/sesame_image.jpg",
 			"inclusive": false,
 			"translations": {
 				"en": {
@@ -154,11 +144,10 @@
 		},
 		{
 			"id": "soybeans",
-			"media_url": "https://example.com/soybeans_image.jpg",
 			"inclusive": false,
 			"translations": {
 				"en": {
-					"name": "Soybeans"
+					"name": "Soybeans
 				},
 				"es": {
 					"name": "Soja"
@@ -166,8 +155,7 @@
 			}
 		},
 		{
-			"id": "sulphur_dioxide_sulphites",
-			"media_url": "https://example.com/sulphites_image.jpg",
+			"id": "sulphites",
 			"inclusive": false,
 			"translations": {
 				"en": {
@@ -180,7 +168,6 @@
 		},
 		{
 			"id": "gluten",
-			"media_url": "https://example.com/gluten_image.jpg",
 			"inclusive": false,
 			"translations": {
 				"en": {
@@ -193,7 +180,6 @@
 		},
 		{
 			"id": "nuts",
-			"media_url": "https://example.com/nuts_image.jpg",
 			"inclusive": false,
 			"translations": {
 				"en": {
@@ -206,7 +192,6 @@
 		},
 		{
 			"id": "vegan",
-			"media_url": "https://example.com/vegan_image.jpg",
 			"inclusive": true,
 			"translations": {
 				"en": {
@@ -219,7 +204,6 @@
 		},
 		{
 			"id": "vegetarian",
-			"media_url": "https://example.com/vegetarian_image.jpg",
 			"inclusive": true,
 			"translations": {
 				"en": {
@@ -231,13 +215,14 @@
 			}
 		}
 	],
-	"privilages": [
+	"privileges": [
+		"UPDATE_CATEGORIES",
+		"DELETE_CATEGORIES",
+		"CREATE_MENU_ITEMS",
+		"UPDATE_MENU_ITEMS",
+		"DELETE_MENU_ITEMS",
 		"PLACE_ORDER",
-		"LOGOUT",
-		"TRACK_ORDER",
-		"UPDATE_MENU",
-		"SALES_REPORT",
-		"UPDATE_ORDER_STATUS"
+		"REGISTER_USER"
 	],
 	"groups": [
 		{
@@ -251,9 +236,16 @@
 					"name": "Administrador"
 				}
 			},
-			"privilages": [
-				"UPDATE_MENU",
-				"SALES_REPORT"
+			"privileges": [
+				"CREATE_CATEGORIES",
+				"UPDATE_CATEGORIES",
+				"DELETE_CATEGORIES",
+				"CREATE_MENU_ITEMS",
+				"UPDATE_MENU_ITEMS",
+				"DELETE_MENU_ITEMS",
+				"PLACE_ORDER",
+				"REGISTER_USER",
+				"READ_USER_INFO"
 			]
 		},
 		{
@@ -267,32 +259,30 @@
 					"name": "Camarero"
 				}
 			},
-			"privilages": [
-				"UPDATE_ORDER_STATUS",
-				"TRACK_ORDER"
+			"privileges": [
+				"PLACE_ORDER"
 			]
 		},
 		{
-			"id": "guest",
+			"id": "table",
 			"color": "#0000ff",
 			"translations": {
 				"en": {
-					"name": "Guest"
+					"name": "Table"
 				},
 				"es": {
-					"name": "Invitado"
+					"name": "Mesa"
 				}
 			},
-			"privilages": [
-				"PLACE_ORDER",
-				"LOGOUT",
-				"TRACK_ORDER"
+			"privileges": [
+				"PLACE_ORDER"
 			]
 		}
 	],
 	"users": [
 		{
 			"username": "admin",
+			"name": "admin",
 			"photo_url": "admin_photo_url",
 			"password": "$2a$12$DZrx1cIkQzsONgFjfupMtegwiWIPFbtEdfMkpQ2S6cW2fjrXaAM3C",
 			"groups": [
@@ -301,6 +291,7 @@
 		},
 		{
 			"username": "waiter",
+			"name": "waiter",
 			"photo_url": "waiter_photo_url",
 			"password": "$2a$12$DZrx1cIkQzsONgFjfupMtegwiWIPFbtEdfMkpQ2S6cW2fjrXaAM3C",
 			"groups": [
@@ -309,10 +300,18 @@
 		},
 		{
 			"username": "guest",
+			"name": "Guest",
+			"photo_url": "guest",
+			"password": "$2a$12$wF2Q1mo6gDQDghO/h6IdLeYXexmr8Y4eOsYJdKwt0n3KQGWcLLvwK",
+			"groups": []
+		},
+		{
+			"username": "table 1",
+			"name": "Table 1",
 			"photo_url": "waiter_photo_url",
 			"password": "$2a$12$DZrx1cIkQzsONgFjfupMtegwiWIPFbtEdfMkpQ2S6cW2fjrXaAM3C",
 			"groups": [
-				"guest"
+				"table"
 			]
 		}
 	],
@@ -418,8 +417,7 @@
 				{
 					"id": "paella_valenciana",
 					"price": 20.00,
-					"allergens": [
-					],
+					"allergens": [],
 					"translations": {
 						"en": {
 							"name": "Valencian Paella",
@@ -451,8 +449,7 @@
 				{
 					"id": "cordero_asado",
 					"price": 22.00,
-					"allergens": [
-					],
+					"allergens": [],
 					"translations": {
 						"en": {
 							"name": "Roast Lamb",

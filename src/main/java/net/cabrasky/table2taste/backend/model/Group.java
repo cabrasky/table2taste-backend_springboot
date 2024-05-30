@@ -14,14 +14,14 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "app_group")
-public class Group implements ModificableModelInterface<String> {
+public class Group implements ModelInterface<String> {
 	@Id
 	@Column(name = "id")
 	private String id;
 
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "group_privilage", joinColumns = @JoinColumn(name = "group_id"), inverseJoinColumns = @JoinColumn(name = "privilage_id"))
-	private Set<Privilage> privilages;
+	@JoinTable(name = "group_privilege", joinColumns = @JoinColumn(name = "group_id"), inverseJoinColumns = @JoinColumn(name = "privilege_id"))
+	private Set<Privilege> privileges;
 
 	@Column(name = "color")
 	private String color;
@@ -38,16 +38,16 @@ public class Group implements ModificableModelInterface<String> {
 		this.id = id;
 	}
 
-	public Set<Privilage> getPrivilages() {
-		return privilages;
+	public Set<Privilege> getPrivileges() {
+		return privileges;
 	}
 
-	public void setPrivilages(Set<Privilage> privilages) {
-		if(this.privilages != null){
-			this.privilages.clear();
-			this.privilages.addAll(privilages);
+	public void setPrivileges(Set<Privilege> privileges) {
+		if(this.privileges != null){
+			this.privileges.clear();
+			this.privileges.addAll(privileges);
 		} else {
-			this.privilages = privilages;
+			this.privileges = privileges;
 		}
 	}
 

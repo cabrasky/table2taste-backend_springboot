@@ -1,13 +1,15 @@
 package net.cabrasky.table2taste.backend.modelDto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Set;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class UserDTO implements ModelDTOInterface<Integer> {
-    @JsonProperty("id")
-    public Integer id;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class UserDTO implements ModelDTOInterface<String> {
+    @JsonProperty("username")
+    public String username;
+
+    @JsonProperty("password")
+    public String password;
 
     @JsonProperty("name")
     public String name;

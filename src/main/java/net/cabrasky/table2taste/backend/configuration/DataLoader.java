@@ -23,7 +23,7 @@ import net.cabrasky.table2taste.backend.model.Category;
 import net.cabrasky.table2taste.backend.model.Group;
 import net.cabrasky.table2taste.backend.model.Language;
 import net.cabrasky.table2taste.backend.model.MenuItem;
-import net.cabrasky.table2taste.backend.model.Privilage;
+import net.cabrasky.table2taste.backend.model.Privilege;
 import net.cabrasky.table2taste.backend.model.Translation;
 import net.cabrasky.table2taste.backend.model.User;
 import net.cabrasky.table2taste.backend.repository.AllergenRepository;
@@ -31,7 +31,7 @@ import net.cabrasky.table2taste.backend.repository.CategoryRepository;
 import net.cabrasky.table2taste.backend.repository.GroupRepository;
 import net.cabrasky.table2taste.backend.repository.LanguageRepository;
 import net.cabrasky.table2taste.backend.repository.MenuItemRepository;
-import net.cabrasky.table2taste.backend.repository.PrivilageRepository;
+import net.cabrasky.table2taste.backend.repository.PrivilegeRepository;
 import net.cabrasky.table2taste.backend.repository.UserRepository;
 
 @Configuration
@@ -52,7 +52,7 @@ public class DataLoader {
 	private MenuItemRepository menuItemRepository;
 
 	@Autowired
-	private PrivilageRepository privilageRepository;
+	private PrivilegeRepository privilegeRepository;
 
 	@Autowired
 	private GroupRepository groupRepository;
@@ -79,10 +79,10 @@ public class DataLoader {
 					logger.info("Allergens already exist. Skipping data loading.");
 				}
 
-				if (privilageRepository.count() == 0) {
-					loadDefaultPrivilages(defaultData);
+				if (privilegeRepository.count() == 0) {
+					loadDefaultPrivileges(defaultData);
 				} else {
-					logger.info("Privilages already exist. Skipping data loading.");
+					logger.info("Privileges already exist. Skipping data loading.");
 				}
 
 				if (groupRepository.count() == 0) {
@@ -129,11 +129,11 @@ public class DataLoader {
 	}
 
 	@Transactional
-	public void loadDefaultPrivilages(JsonObject data) {
-		for (JsonElement privilageElement : data.get("privilages").getAsJsonArray()) {
-			Privilage privilage = new Privilage();
-			privilage.setId(privilageElement.getAsString());
-			privilageRepository.save(privilage);
+	public void loadDefaultPrivileges(JsonObject data) {
+		for (JsonElement privilegeElement : data.get("privileges").getAsJsonArray()) {
+			Privilege privilege = new Privilege();
+			privilege.setId(privilegeElement.getAsString());
+			privilegeRepository.save(privilege);
 		}
 	}
 
@@ -156,7 +156,6 @@ public class DataLoader {
 	private Allergen getAllergen(JsonObject allergenObject) {
 		Allergen allergen = new Allergen();
 		allergen.setId(allergenObject.get("id").getAsString());
-		allergen.setMediaUrl(allergenObject.get("media_url").getAsString());
 		allergen.setInclusive(allergenObject.get("inclusive").getAsBoolean());
 		allergen.setTranslations(getTranslations(allergenObject));
 		return allergen;
@@ -167,14 +166,15 @@ public class DataLoader {
 		group.setId(groupObject.get("id").getAsString());
 		group.setColor(groupObject.get("color").getAsString());
 		group.setTranslations(getTranslations(groupObject));
-		group.setPrivilages(getPrivilages(groupObject));
+		group.setPrivileges(getPrivileges(groupObject));
 		groupRepository.save(group);
 	}
 
 	private void saveUser(JsonObject userObject) {
 		User user = new User();
 		user.setUsername(userObject.get("username").getAsString());
-		user.setName(userObject.get("photo_url").getAsString());
+		user.setName(userObject.get("name").getAsString());
+		user.setPhotoUrl(userObject.get("photo_url").getAsString());
 		user.setPassword(userObject.get("password").getAsString());
 		user.setGroups(getGroups(userObject));
 		userRepository.save(user);
@@ -238,19 +238,19 @@ public class DataLoader {
 		return allergens;
 	}
 
-	private Set<Privilage> getPrivilages(JsonObject object) {
-		Set<Privilage> privilages = new HashSet<>();
-		JsonArray privilagesArray = object.getAsJsonArray("privilages");
+	private Set<Privilege> getPrivileges(JsonObject object) {
+		Set<Privilege> privileges = new HashSet<>();
+		JsonArray privilegesArray = object.getAsJsonArray("privileges");
 
-		privilagesArray.forEach(privilageElement -> {
-			String privilageId = privilageElement.getAsString();
-			Privilage privilage = privilageRepository.findById(privilageId).orElse(null);
-			if (privilage != null) {
-				privilages.add(privilage);
+		privilegesArray.forEach(privilegeElement -> {
+			String privilegeId = privilegeElement.getAsString();
+			Privilege privilege = privilegeRepository.findById(privilegeId).orElse(null);
+			if (privilege != null) {
+				privileges.add(privilege);
 			}
 
 		});
-		return privilages;
+		return privileges;
 	}
 
 	private Set<Group> getGroups(JsonObject object) {

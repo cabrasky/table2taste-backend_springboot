@@ -9,29 +9,18 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-public class TicketPrinterWebSocketHandler extends TextWebSocketHandler {
+public class TableCodeWebSocketHandler extends TextWebSocketHandler {	
 	private final Map<String, WebSocketSession> sessions = new ConcurrentHashMap<>();
-    private static final String SECRET_KEY = "your_secret_key";
 
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-		String query = session.getUri().getQuery();
-        if (query != null && query.contains("key=" + SECRET_KEY)) {
-        	System.out.println(String.format("Printer connected from: %s", session.getLocalAddress().toString()));
-            sessions.put(session.getId(), session);
-        } else {
-            session.close(CloseStatus.NOT_ACCEPTABLE.withReason("Unauthorized"));
-        }
-    }
+		sessions.put(session.getId(), session);
+	}
 
-	
 	@Override
-    public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-		System.out.println(String.format("Printer disconnected from: %s", session.getLocalAddress().toString()));
-        sessions.remove(session.getId());
-    }
-
-
+	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+		sessions.remove(session.getId());
+	}
 
 	public void broadcast(String message) {
 		for (WebSocketSession session : sessions.values()) {
