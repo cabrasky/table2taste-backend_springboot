@@ -147,7 +147,7 @@
 			"inclusive": false,
 			"translations": {
 				"en": {
-					"name": "Soybeans
+					"name": "Soybeans"
 				},
 				"es": {
 					"name": "Soja"
@@ -222,7 +222,12 @@
 		"UPDATE_MENU_ITEMS",
 		"DELETE_MENU_ITEMS",
 		"PLACE_ORDER",
-		"REGISTER_USER"
+		"PLACE_ORDER_TO_OTHERS",
+		"REGISTER_USER",
+		"DELETE_TABLES",
+		"ADD_TABLES",
+		"VIEW_TABLES",
+		"UPDATE_TABLES"
 	],
 	"groups": [
 		{
@@ -243,9 +248,12 @@
 				"CREATE_MENU_ITEMS",
 				"UPDATE_MENU_ITEMS",
 				"DELETE_MENU_ITEMS",
-				"PLACE_ORDER",
 				"REGISTER_USER",
-				"READ_USER_INFO"
+				"READ_USER_INFO",
+				"DELETE_TABLES",
+				"ADD_TABLES",
+				"VIEW_TABLES",
+				"UPDATE_TABLES"
 			]
 		},
 		{
@@ -260,7 +268,9 @@
 				}
 			},
 			"privileges": [
-				"PLACE_ORDER"
+				"PLACE_ORDER",
+				"PLACE_ORDER_TO_OTHERS",
+				"VIEW_TABLES"
 			]
 		},
 		{
@@ -284,7 +294,7 @@
 			"username": "admin",
 			"name": "admin",
 			"photo_url": "admin_photo_url",
-			"password": "$2a$12$DZrx1cIkQzsONgFjfupMtegwiWIPFbtEdfMkpQ2S6cW2fjrXaAM3C",
+			"password": "admin",
 			"groups": [
 				"admin"
 			]
@@ -293,7 +303,7 @@
 			"username": "waiter",
 			"name": "waiter",
 			"photo_url": "waiter_photo_url",
-			"password": "$2a$12$DZrx1cIkQzsONgFjfupMtegwiWIPFbtEdfMkpQ2S6cW2fjrXaAM3C",
+			"password": "waiter",
 			"groups": [
 				"waiter"
 			]
@@ -302,22 +312,29 @@
 			"username": "guest",
 			"name": "Guest",
 			"photo_url": "guest",
-			"password": "$2a$12$wF2Q1mo6gDQDghO/h6IdLeYXexmr8Y4eOsYJdKwt0n3KQGWcLLvwK",
-			"groups": []
+			"password": "randK",
+			"groups": [
+			]
+		}
+	],
+	"tables": [
+		{
+			"id": 1,
+			"capacity": 4			
 		},
 		{
-			"username": "table 1",
-			"name": "Table 1",
-			"photo_url": "waiter_photo_url",
-			"password": "$2a$12$DZrx1cIkQzsONgFjfupMtegwiWIPFbtEdfMkpQ2S6cW2fjrXaAM3C",
-			"groups": [
-				"table"
-			]
+			"id": 2,
+			"capacity": 2			
+		},
+		{
+			"id": 3,
+			"capacity": 6			
 		}
 	],
 	"categories": [
 		{
 			"id": "entrantes",
+			"menuPriority": 0,
 			"translations": {
 				"en": {
 					"name": "Appetizers"
@@ -404,6 +421,7 @@
 		},
 		{
 			"id": "platos_principales",
+			"menuPriority": 1,
 			"translations": {
 				"en": {
 					"name": "Main Courses"
@@ -417,7 +435,8 @@
 				{
 					"id": "paella_valenciana",
 					"price": 20.00,
-					"allergens": [],
+					"allergens": [
+					],
 					"translations": {
 						"en": {
 							"name": "Valencian Paella",
@@ -449,7 +468,8 @@
 				{
 					"id": "cordero_asado",
 					"price": 22.00,
-					"allergens": [],
+					"allergens": [
+					],
 					"translations": {
 						"en": {
 							"name": "Roast Lamb",
@@ -483,6 +503,7 @@
 		},
 		{
 			"id": "postres",
+			"menuPriority": 2,
 			"translations": {
 				"en": {
 					"name": "Desserts"
@@ -554,6 +575,7 @@
 		},
 		{
 			"id": "bebidas",
+			"menuPriority": 3,
 			"translations": {
 				"en": {
 					"name": "Beverages"

@@ -60,7 +60,7 @@ public class MenuItemService extends AbstractModificableService<MenuItem, MenuIt
 		List<Allergen> exclusiveAllergens = allergenRepository.findByIdInAndInclusive(allergenIds, false);
 
 		return categoryRepository.findAllCategoriesInDepth(categoryId).stream()
-				.flatMap(category -> category.getMenuItems().stream())
+				.flatMap(category -> category.getMenuItems().stream().sorted((o1, o2) -> o1.getId().compareTo(o2.getId())))
 				.filter(menuItem -> menuItem.getAllergens().containsAll(inclusiveAllergens))
 				.filter(menuItem -> menuItem.getAllergens().stream().noneMatch(exclusiveAllergens::contains)).toList();
 	}

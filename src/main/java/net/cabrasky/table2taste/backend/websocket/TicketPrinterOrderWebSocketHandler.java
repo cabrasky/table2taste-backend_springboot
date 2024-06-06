@@ -4,29 +4,24 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.springframework.lang.NonNull;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-public class TicketPrinterWebSocketHandler extends TextWebSocketHandler {
+public class TicketPrinterOrderWebSocketHandler extends TextWebSocketHandler {
 	private final Map<String, WebSocketSession> sessions = new ConcurrentHashMap<>();
-    private static final String SECRET_KEY = "your_secret_key";
 
 	@Override
-	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-		String query = session.getUri().getQuery();
-        if (query != null && query.contains("key=" + SECRET_KEY)) {
-        	System.out.println(String.format("Printer connected from: %s", session.getLocalAddress().toString()));
+	public void afterConnectionEstablished(@NonNull WebSocketSession session) throws Exception {
             sessions.put(session.getId(), session);
-        } else {
-            session.close(CloseStatus.NOT_ACCEPTABLE.withReason("Unauthorized"));
-        }
     }
 
 	
+	@SuppressWarnings("null")
 	@Override
-    public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+    public void afterConnectionClosed(@NonNull WebSocketSession session, @NonNull CloseStatus status) throws Exception {
 		System.out.println(String.format("Printer disconnected from: %s", session.getLocalAddress().toString()));
         sessions.remove(session.getId());
     }

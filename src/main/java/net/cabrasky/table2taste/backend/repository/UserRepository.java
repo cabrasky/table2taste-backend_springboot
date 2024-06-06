@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import net.cabrasky.table2taste.backend.model.User;
 
-
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
 	public Boolean existsByUsername(String username);

@@ -16,6 +16,9 @@ public class CategoryDTO implements ModelDTOInterface<String> {
     @JsonProperty("parentCategoryId")
     public String parentCategoryId;
 
+    @JsonProperty("menuPriority")
+    public Integer menuPriority;
+
     @JsonProperty("translations")
     public Set<TranslationDTO> translations;
 

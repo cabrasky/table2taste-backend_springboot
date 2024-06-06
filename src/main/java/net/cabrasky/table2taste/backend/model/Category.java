@@ -2,6 +2,8 @@ package net.cabrasky.table2taste.backend.model;
 
 import java.util.Set;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 
@@ -26,6 +28,10 @@ public class Category implements ModelInterface<String> {
 
     @Column(name = "media_url")
     private String mediaUrl;
+
+    @Column(name = "menu_priority")
+    @ColumnDefault("0")
+    private Integer menuPriority = 0;
 
     @Column(name = "parent_category_id")
     @Nullable
@@ -71,6 +77,14 @@ public class Category implements ModelInterface<String> {
 
     public void setParentCategoryId(String parentCategoryId) {
         this.parentCategoryId = parentCategoryId.isEmpty() ? null : parentCategoryId;
+    }
+
+    public Integer getMenuPriority() {
+        return menuPriority;
+    }
+
+    public void setMenuPriority(Integer menuPriority) {
+        this.menuPriority = menuPriority;
     }
 
     public Category getParentCategory() {

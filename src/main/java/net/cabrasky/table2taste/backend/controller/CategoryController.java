@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +28,7 @@ public class CategoryController extends AbstractModificableController<Category, 
             .filter(t -> t.language.id.equals(defaultLanguageId) && t.translationKey.equals("name"))
             .findFirst();
         if (optionalTranslationDTO.isEmpty()) {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            return ResponseEntity.badRequest().build();
         }
         entity.id = optionalTranslationDTO.get().value;
         return super.create(entity);

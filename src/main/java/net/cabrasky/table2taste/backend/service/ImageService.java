@@ -27,7 +27,8 @@ public class ImageService {
     private String fileBasePath;
 
     public ResponseEntity<UploadImageResponseDTO> uploadImage(MultipartFile file) {
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        @SuppressWarnings("null")
+		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         Path path = Paths.get(fileBasePath + fileName);
         try {
             Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);

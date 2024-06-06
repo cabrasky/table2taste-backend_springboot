@@ -11,6 +11,7 @@ import net.cabrasky.table2taste.backend.service.UserService;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -34,9 +35,17 @@ public class JwtAuthController {
 
     @Autowired
     private UserService userService;
+    	
+	@Value("${app.default.tablePassword}")
+    private String defaultTablePassword;
+
 
     @PostMapping("/login")
     public ResponseEntity<JwtResponse> authenticateUser(@RequestBody AuthRequestDTO loginRequest) {
+    	userService.getById(loginRequest.username).ifPresent((u) -> {
+    		if(u.getGroups() != null && u.getGroups().stream().anyMatch(group -> group.getId().equals("table")))
+    		loginRequest.password = defaultTablePassword;
+    	});
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.username, loginRequest.password));
         SecurityContextHolder.getContext().setAuthentication(authentication);

@@ -1,11 +1,11 @@
 package net.cabrasky.table2taste.backend.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.lang.NonNull;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import net.cabrasky.table2taste.backend.websocket.TableCodeWebSocketHandler;
-import net.cabrasky.table2taste.backend.websocket.TicketPrinterWebSocketHandler;
+import net.cabrasky.table2taste.backend.websocket.TicketPrinterOrderWebSocketHandler;
 
 
 
@@ -13,7 +13,7 @@ import net.cabrasky.table2taste.backend.websocket.TicketPrinterWebSocketHandler;
 public class WebConfig implements WebMvcConfigurer {
 
     @Override
-    public void addCorsMappings(CorsRegistry registry) {
+    public void addCorsMappings(@NonNull CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("*")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
@@ -22,13 +22,8 @@ public class WebConfig implements WebMvcConfigurer {
     }
     
     @Bean
-    public TicketPrinterWebSocketHandler ticketPrinterWebSocketHandler() {
-        return new TicketPrinterWebSocketHandler();
-    }
-    
-    @Bean
-    public TableCodeWebSocketHandler tableCodeWebSocketHandler() {
-        return new TableCodeWebSocketHandler();
+    public TicketPrinterOrderWebSocketHandler ticketPrinterWebSocketHandler() {
+        return new TicketPrinterOrderWebSocketHandler();
     }
 
 }

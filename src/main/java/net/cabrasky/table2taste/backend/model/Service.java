@@ -1,32 +1,35 @@
 package net.cabrasky.table2taste.backend.model;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.hibernate.annotations.CreationTimestamp;
 
 import io.micrometer.common.lang.Nullable;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.SequenceGenerator;
 
 @Entity
 @jakarta.persistence.Table(name = "service")
 public class Service implements ModelInterface<Long> {
 	@Id
-	@GeneratedValue(generator = "service_gen")
-	@SequenceGenerator(name = "service_gen", sequenceName = "service_id_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	@Column(name = "id")
 	private Long id;
 
 	@ManyToOne
 	@JoinColumn(name = "table_id")
-	private Table apptable;
+	private Table table;
 
 	@CreationTimestamp
 	@Column(name = "open_timestamp")
@@ -37,10 +40,10 @@ public class Service implements ModelInterface<Long> {
 	private Timestamp closeTimestamp;
 
 	@Column(name = "is_open")
-	private Boolean isOpen;
+	private Boolean isOpen = true;
 
-	@OneToMany(mappedBy = "service")
-	private Set<Order> orders;
+	@OneToMany(mappedBy = "service", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Order> orders = new HashSet<>();
 
 	// Getters and setters
 
@@ -48,18 +51,18 @@ public class Service implements ModelInterface<Long> {
 		return id;
 	}
 
-	public Table getApptable() {
-		return apptable;
+	public Table getTable() {
+		return table;
 	}
 
-	public void setApptable(Table apptable) {
-		this.apptable = apptable;
+	public void setTable(Table table) {
+		this.table = table;
 	}
 
 	public Timestamp getOpenTimestamp() {
 		return openTimestamp;
 	}
-	
+
 	public Timestamp getCloseTimestamp() {
 		return closeTimestamp;
 	}
@@ -81,7 +84,24 @@ public class Service implements ModelInterface<Long> {
 	}
 
 	public void setOrders(Set<Order> orders) {
-		this.orders = orders;
+		this.orders = new HashSet<>(orders);
+	}
+
+	public Set<OrderItemQuantity> getAllOrderItems() {
+		return orders.stream().flatMap(order -> order.getOrderItemQuantities().stream()).collect(Collectors
+				.groupingBy(OrderItemQuantity::getOrderItem, Collectors.summingInt(OrderItemQuantity::getQuantity)))
+				.entrySet().stream().map(entry -> {
+					OrderItemQuantity orderItemQuantity = new OrderItemQuantity();
+					orderItemQuantity.setOrderItem(entry.getKey());
+					orderItemQuantity.setQuantity(entry.getValue());
+					return orderItemQuantity;
+				}).collect(Collectors.toSet());
+	}
+
+	public Double getTotalPrice() {
+		return getAllOrderItems().stream().mapToDouble(
+				orderItemQuantity -> orderItemQuantity.getOrderItem().getPrice() * orderItemQuantity.getQuantity())
+				.sum();
 	}
 
 }

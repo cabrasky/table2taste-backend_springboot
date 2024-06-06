@@ -33,7 +33,7 @@ public class SecurityConfiguration {
     @Autowired
     private AuthEntryPointJwt unauthorizedHandler;
 
-    private static final String[] WHITE_LIST_URL = { "*", "*/**" };
+    private static final String[] WHITE_LIST_URL = { "*", "*/**"};
 
     @Bean
     public AuthTokenFilter authenticationJwtTokenFilter() {
