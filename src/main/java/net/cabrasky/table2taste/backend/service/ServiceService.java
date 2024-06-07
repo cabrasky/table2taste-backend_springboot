@@ -37,7 +37,7 @@ public class ServiceService {
 
 	@Transactional
 	public Service closeService(Table table) {
-		if (table.getLastService() != null) {
+		if (table !=null && table.getLastService() != null) {
 			Service service = table.getLastService();
 			service.setIsOpen(false);
 			service.setCloseTimestamp(new Timestamp(new Date().getTime()));
