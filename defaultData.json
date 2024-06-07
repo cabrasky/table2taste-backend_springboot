@@ -227,7 +227,8 @@
 		"DELETE_TABLES",
 		"ADD_TABLES",
 		"VIEW_TABLES",
-		"UPDATE_TABLES"
+		"UPDATE_TABLES",
+		"ADMIN_VIEW"
 	],
 	"groups": [
 		{
@@ -253,7 +254,8 @@
 				"DELETE_TABLES",
 				"ADD_TABLES",
 				"VIEW_TABLES",
-				"UPDATE_TABLES"
+				"UPDATE_TABLES",
+				"ADMIN_VIEW"
 			]
 		},
 		{
@@ -348,6 +350,7 @@
 				{
 					"id": "jamon_iberico",
 					"price": 15.00,
+					"mediaUrl": "https://loveincstatic.blob.core.windows.net/lovefood/2020/guide-to-jamon-iberico/guide-to-jamon-intro.jpg",
 					"allergens": [
 						"gluten"
 					],
@@ -365,6 +368,7 @@
 				{
 					"id": "gazpacho_andaluz",
 					"price": 8.00,
+					"mediaUrl": "https://img2.rtve.es/imagenes/asi-preparan-andaluces-gazpacho-autentico/1621621774172.jpg",
 					"allergens": [
 						"vegan",
 						"vegetarian"
@@ -383,6 +387,7 @@
 				{
 					"id": "tortilla_espanola",
 					"price": 6.00,
+					"mediaUrl": "https://mojo.generalmills.com/api/public/content/9xIHKwJDH0-1wbHPsVCCVQ_gmi_hi_res_jpeg.jpeg?v=2bfc22c6&t=16e3ce250f244648bef28c5949fb99ff",
 					"allergens": [
 						"eggs",
 						"vegetarian"
@@ -401,6 +406,7 @@
 				{
 					"id": "croquetas_de_jamon",
 					"price": 10.00,
+					"mediaUrl": "https://elgourmet.s3.amazonaws.com/recetas/cover/fba2ab0920888f003178592407d8fd98_3_3_photo.png",
 					"allergens": [
 						"gluten",
 						"milk",
@@ -435,6 +441,7 @@
 				{
 					"id": "paella_valenciana",
 					"price": 20.00,
+					"mediaUrl": "https://www.eatingwell.com/thmb/hfLtiL1DpSbIDuESpc-GR6Vi7Lo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/paella-valenciana-d8e69623cc56438590bf1d5c040e384d.jpg",
 					"allergens": [
 					],
 					"translations": {
@@ -451,6 +458,7 @@
 				{
 					"id": "merluza_a_la_gallega",
 					"price": 18.00,
+					"mediaUrl": "https://www.elartedeamasar.com/wp-content/uploads/2016/05/fe857-merluza-a-la-gallega-cazuela.jpg",
 					"allergens": [
 						"fish"
 					],
@@ -468,6 +476,7 @@
 				{
 					"id": "cordero_asado",
 					"price": 22.00,
+					"mediaUrl": "https://iberflavours.com/wp-content/uploads/2020/06/cordero-asado-1170x780.jpg",
 					"allergens": [
 					],
 					"translations": {
@@ -484,6 +493,7 @@
 				{
 					"id": "pisto_manchego",
 					"price": 14.00,
+					"mediaUrl": "https://radfoodie.com/wp-content/uploads/2020/11/Pisto-manchego-in-bowl-square.jpg",
 					"allergens": [
 						"vegan",
 						"vegetarian"
@@ -517,6 +527,7 @@
 				{
 					"id": "tarta_de_santiago",
 					"price": 7.00,
+					"mediaUrl": "https://assets-eu-01.kc-usercontent.com/559bb7d3-88a4-01c1-79a3-dd4d5b2d2bb0/831d8912-b431-4e4f-b642-785339f5329d/Tarta%20de%20Santiago_Landscape%201.jpg",
 					"allergens": [
 						"nuts",
 						"eggs",
@@ -536,6 +547,7 @@
 				{
 					"id": "crema_catalana",
 					"price": 6.00,
+					"mediaUrl": "https://spanishsabores.com/wp-content/uploads/2023/08/Crema-Catalana-Featured.jpg",
 					"allergens": [
 						"milk",
 						"eggs",
@@ -555,6 +567,7 @@
 				{
 					"id": "churros_con_chocolate",
 					"price": 5.00,
+					"mediaUrl": "https://www.seasonsandsuppers.ca/wp-content/uploads/2015/05/churros-con-chocolate1050-2.jpg",
 					"allergens": [
 						"gluten",
 						"milk",
@@ -589,6 +602,7 @@
 				{
 					"id": "sangria",
 					"price": 4.00,
+					"mediaUrl": "https://cdn.loveandlemons.com/wp-content/uploads/2021/06/sangria-1.jpg",
 					"allergens": [
 						"sulphur_dioxide_sulphites",
 						"vegan",
@@ -608,6 +622,7 @@
 				{
 					"id": "agua_de_valencia",
 					"price": 6.00,
+					"mediaUrl": "https://realfood.tesco.com/media/images/RFO-1400x919-Agua-mini-mini-fcddd958-38ec-496d-9c06-5ced83581ada-0-1400x919.jpg",
 					"allergens": [
 						"sulphur_dioxide_sulphites",
 						"vegan",
@@ -627,6 +642,7 @@
 				{
 					"id": "vino_rioja",
 					"price": 5.00,
+					"mediaUrl": "https://vivancoculturadevino.es/blog/wp-content/uploads/2016/03/COPA-VINO-3.jpg",
 					"allergens": [
 						"sulphur_dioxide_sulphites",
 						"vegan",
@@ -646,6 +662,7 @@
 				{
 					"id": "horchata_de_chufa",
 					"price": 3.00,
+					"mediaUrl": "http://localhost:3000/menuItem/horchata_de_chufa",
 					"allergens": [
 						"vegan",
 						"vegetarian"

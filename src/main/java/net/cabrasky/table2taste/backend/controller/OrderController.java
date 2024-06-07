@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.cabrasky.table2taste.backend.model.Order;
+import net.cabrasky.table2taste.backend.model.Service;
 import net.cabrasky.table2taste.backend.model.Table;
 import net.cabrasky.table2taste.backend.modelDto.OrderDTO;
 import net.cabrasky.table2taste.backend.service.OrderService;
@@ -24,27 +25,27 @@ import net.cabrasky.table2taste.backend.service.OrderService;
 @RequestMapping("/order")
 public class OrderController {
 
-    @Autowired
-    private OrderService orderService;
+	@Autowired
+	private OrderService orderService;
 
-    @PostMapping
-    @PreAuthorize("hasAuthority('PLACE_ORDER')")
-    public ResponseEntity<String> sendMessageToWebSocketClients(@RequestBody OrderDTO orderDto, @RequestParam(required = false) Long tableId) throws BadRequestException {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String currentPrincipalName = authentication.getName();
+	@PostMapping
+	@PreAuthorize("hasAuthority('PLACE_ORDER')")
+	public ResponseEntity<String> sendMessageToWebSocketClients(@RequestBody OrderDTO orderDto,
+			@RequestParam(required = false) Long tableId) throws BadRequestException {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication.getName();
 
-        Table table = orderService.findTableForUserOrById(currentPrincipalName, tableId);
-        if (table == null) {
-            return ResponseEntity.badRequest().body("Table not found for user or provided ID");
-        }
-        
-        orderService.createOrder(currentPrincipalName, table, orderDto);
+		Table table = orderService.findTableForUserOrById(currentPrincipalName, tableId);
+		if (table == null) {
+			return ResponseEntity.badRequest().body("Table not found for user or provided ID");
+		}
 
+		orderService.createOrder(currentPrincipalName, table, orderDto);
 
-        return ResponseEntity.ok().build();
-    }
+		return ResponseEntity.ok().build();
+	}
 
-    @GetMapping("/history")
+	@GetMapping("/history")
     @PreAuthorize("hasAuthority('PLACE_ORDER')")
     public ResponseEntity<Set<Order>> getHistory(@RequestParam(required = false) Long tableId) throws BadRequestException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -54,7 +55,7 @@ public class OrderController {
         if (table == null) {
             return ResponseEntity.badRequest().build();
         }
-       
-        return ResponseEntity.ok().body(table.getLastService().getOrders());
+        Service service = table.getLastService();
+        return ResponseEntity.ok().body(service == null ? null : service.getOrders());
     }
 }

@@ -205,7 +205,7 @@ public class DataLoader {
 		MenuItem menuItem = new MenuItem();
 		menuItem.setId(menuItemObject.get("id").getAsString());
 		menuItem.setPrice(menuItemObject.get("price").getAsDouble());
-		menuItem.setMediaUrl("");
+		menuItem.setMediaUrl(menuItemObject.get("mediaUrl").getAsString());
 		menuItem.setTranslations(getTranslations(menuItemObject));
 		menuItem.setAllergens(getAllergens(menuItemObject));
 		return menuItem;

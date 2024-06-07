@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import io.micrometer.common.lang.Nullable;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -27,6 +29,7 @@ public class Service implements ModelInterface<Long> {
 	@Column(name = "id")
 	private Long id;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "table_id")
 	private Table table;
